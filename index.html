@@ -24,12 +24,23 @@
             color: var(--text-color);
             line-height: 1.6;
         }
-        .herr{
-            background: url("Untitled (Logo).gif");
-            background-size: cover;
-            background-repeat: no-repeat;
-            height:600px;
-            width:auto;
+
+        .herr {
+            position: relative;
+            height: 600px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .herr video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translate(-50%, -50%);
+            z-index: -1;
         }
         
         .container {
@@ -327,11 +338,9 @@
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: auto;
+            gap: 20px;
             margin-top: 50px;
-            padding:auto;
-            
-            height: fit-content;
+            padding: 0 15px;
         }
         
         .product-card {
@@ -340,6 +349,8 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
             transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
         }
         
         .product-card:hover {
@@ -350,12 +361,14 @@
             height: 200px;
             position: relative;
             overflow: hidden;
+            width: 100%;
         }
         
         .product-image img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
+            display: block;
         }
         
         .qr-tag {
@@ -371,6 +384,7 @@
             justify-content: center;
             box-shadow: 0 3px 6px rgba(0,0,0,0.1);
             cursor: pointer;
+            z-index: 1;
         }
         
         .product-info {
@@ -637,11 +651,9 @@
 <body>
     <!-- Header -->
     <header>
-        
         <div class="container header-container">
             <div class="logo">
-                
-                <h2> Saanvi Organics</h2>
+                <h2>Saanvi Organics</h2>
             </div>
             <nav>
                 <ul>
@@ -658,10 +670,14 @@
             </div>
         </div>
     </header>
+
+    <!-- Video Background Section -->
     <div class="herr">
-            
+        <video autoplay muted loop playsinline>
+            <source src="O.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
     </div>
-    
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -774,7 +790,7 @@
                 <div class="product-card">
                     <div class="product-image">
                         <img src="qr-code.png" alt="Organic Tomatoes">
-                       
+                        <div class="qr-tag" onclick="openModal('tomatoes')">QR</div>
                     </div>
                     <div class="product-info">
                         <h3>Organic Tomatoes</h3>
@@ -918,8 +934,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <img src=""
-                <p>&copy; 2025 Sanvi Organics. All rights reserved.</p>
+                <p>© 2025 Sanvi Organics. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -927,7 +942,7 @@
     <!-- QR Code Modal -->
     <div class="modal" id="qrModal">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <span class="close-modal" onclick="closeModal()">×</span>
             <div class="qr-details">
                 <h3 id="modal-product-name">Product Details</h3>
                 <img src="qr-code.png" alt="QR Code">
@@ -941,5 +956,38 @@
                         <span class="detail-label">Farmer Price:</span>
                         <span id="modal-farmer-price">₹45/kg</span>
                     </div>
-                    <div class="detail-row">
-                        
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(product) {
+            const modal = document.getElementById('qrModal');
+            const productName = document.getElementById('modal-product-name');
+            const farmName = document.getElementById('modal-farm-name');
+            const farmerPrice = document.getElementById('modal-farmer-price');
+
+            // Simple product data (you can expand this)
+            const productData = {
+                'tomatoes': { name: 'Organic Tomatoes', farm: 'SunRise Farms, Karnataka', price: '₹40/kg' },
+                'spinach': { name: 'Organic Spinach', farm: 'GreenLeaf Organics, Tamil Nadu', price: '₹30/bunch' },
+                'apples': { name: 'Organic Apples', farm: 'Himalayan Orchards, Himachal', price: '₹90/kg' },
+                'rice': { name: 'Organic Brown Rice', farm: 'PureLand Farms, West Bengal', price: '₹70/kg' }
+            };
+
+            if (productData[product]) {
+                productName.textContent = productData[product].name;
+                farmName.textContent = productData[product].farm;
+                farmerPrice.textContent = productData[product].price;
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('qrModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
