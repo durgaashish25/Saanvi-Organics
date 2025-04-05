@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanvi Organics - Farm to Home</title>
+    <style>
+        :root {
+            --primary-color: #5a9e47;
+            --secondary-color: #f5f5f5;
+            --accent-color: #ff9800;
+            --text-color: #333;
+            --light-green: #e8f5e9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        .herr{
+            background: url(Untitled\ design.png);
+            background-size: 1000px;
+            background-repeat: no-repeat;
+            height:500px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-left: 10px;
+        }
+        
+        .logo-img {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            position: relative;
+        }
+        
+        .logo-img::after {
+            content: "S";
+            position: absolute;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .header-buttons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .header-buttons a {
+            margin-left: 15px;
+            text-decoration: none;
+        }
+        
+        .btn {
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: #4a8839;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--light-green);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: #4a8839;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 0;
+            background-color: var(--secondary-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+            color: #666;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--light-green);
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        
+        /* How It Works */
+        .how-it-works {
+            padding: 80px 0;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin: 0 auto 15px;
+        }
+        
+        .step h3 {
+            margin-bottom: 15px;
+        }
+        
+        /* QR Code Section */
+        .qr-section {
+            padding: 80px 0;
+            background-color: var(--light-green);
+        }
+        
+        .qr-content {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .qr-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .qr-info h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        
+        .qr-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .qr-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+        }
+        
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .category-btn {
+            padding: 8px 20px;
+            background-color: var(--light-green);
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: auto;
+            margin-top: 50px;
+            padding:auto;
+            
+            height: fit-content;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 200px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .qr-tag {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background-color: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+        }
+        
+        .farm-name {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .price-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .price {
+            font-weight: bold;
+            font-size: 18px;
+            color: var(--primary-color);
+        }
+        
+        .original-price {
+            font-size: 14px;
+            color: #666;
+            text-decoration: line-through;
+            margin-right: 5px;
+        }
+        
+        .add-to-cart {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 15px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: #4a8839;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background-color: var(--secondary-color);
+        }
+        
+        .testimonial-slider {
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 800px;
+            text-align: center;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        /* Call to Action */
+        .cta {
+            padding: 80px 0;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            font-size: 18px;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .btn-white {
+            background-color: white;
+            color: var(--primary-color);
+            border: none;
+            font-weight: bold;
+        }
+        
+        .btn-white:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .btn-outline-white {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+        
+        .btn-outline-white:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            color: #999;
+            font-size: 14px;
+        }
+        
+        /* Modal for QR Code */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            cursor: pointer;
+            font-size: 20px;
+            color: #777;
+        }
+        
+        .qr-details {
+            text-align: center;
+        }
+        
+        .qr-details img {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+        
+        .product-details {
+            margin-top: 20px;
+        }
+        
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #eee;
+            padding: 10px 0;
+        }
+        
+        .detail-label {
+            font-weight: bold;
+            color: #555;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+            
+            .header-buttons {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                font-size: 24px;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        
+        <div class="container header-container">
+            <div class="logo">
+                
+                <h2> Saanvi Organics</h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#qr-info">QR Transparency</a></li>
+                    <li><a href="#about">About Us</a></li>
+                </ul>
+            </nav>
+            <div class="header-buttons">
+                <a href="#" class="btn btn-outline">Login</a>
+                <a href="#" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+    <div class="herr">
+            
+    </div>
+    
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Farm Fresh Organics, Directly to Your Door</h2>
+            <p>Cutting out the middleman to bring you organic produce at fair prices with complete transparency from farm to table.</p>
+            <a href="#products" class="btn btn-primary">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Sanvi Organics?</h2>
+                <p>We're revolutionizing the way organic products reach your homes with transparency, fairness, and quality.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌱</div>
+                    <h3>100% Organic</h3>
+                    <p>All our products are certified organic, grown without harmful pesticides or chemicals.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💰</div>
+                    <h3>Fair Pricing</h3>
+                    <p>With no middlemen, farmers earn more while you pay less. Win-win!</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Complete Transparency</h3>
+                    <p>Scan QR codes to see exactly what you're paying for and what the farmer received.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works" id="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>How Sanvi Organics Works</h2>
+                <p>A simple process that ensures quality, transparency, and fair pricing for everyone involved.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Farmers List Products</h3>
+                    <p>Local organic farmers list their fresh produce on our platform with their desired prices.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>We Create QR Labels</h3>
+                    <p>Each product gets a unique QR code showing its journey, pricing, and farm details.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>You Shop & Scan</h3>
+                    <p>Browse products, scan QR codes to verify pricing and source, and place your order.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Direct Delivery</h3>
+                    <p>Products are delivered fresh from farms to your doorstep, maintaining the cold chain.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR Code Section -->
+    <section class="qr-section" id="qr-info">
+        <div class="container">
+            <div class="qr-content">
+                <div class="qr-info">
+                    <h2>QR Transparency: Know What You Pay For</h2>
+                    <p>Our unique QR labeling system puts the power back in your hands. Each product comes with a QR code that reveals:</p>
+                    <ul style="margin-left: 20px; margin-top: 15px;">
+                        <li>The farm's location and farming practices</li>
+                        <li>Harvest date and journey timeline</li>
+                        <li>Original price paid to the farmer</li>
+                        <li>Final price to you with breakdown</li>
+                        <li>Certifications and quality testing results</li>
+                    </ul>
+                    <p style="margin-top: 20px;">No hidden fees, no unfair markups, just transparent pricing that's fair to both farmers and consumers.</p>
+                </div>
+                <div class="qr-image">
+                    <img src="/api/placeholder/400/400" alt="QR Code Scanning Example">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Fresh Organic Products</h2>
+                <p>Directly from farms to your table, with complete transparency on pricing.</p>
+            </div>
+            <div class="product-categories">
+                <button class="category-btn active">All Products</button>
+                <button class="category-btn">Vegetables</button>
+                <button class="category-btn">Fruits</button>
+                <button class="category-btn">Dairy & Eggs</button>
+                <button class="category-btn">Grains & Pulses</button>
+                <button class="category-btn">Oils & Spices</button>
+            </div>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="qr-code.png" alt="Organic Tomatoes">
+                       
+                    </div>
+                    <div class="product-info">
+                        <h3>Organic Tomatoes</h3>
+                        <div class="farm-name">From: SunRise Farms, Karnataka</div>
+                        <p>Fresh organic tomatoes, harvested yesterday.</p>
+                        <div class="price-info">
+                            <div>
+                                <span class="price">₹60/kg</span>
+                                <span class="original-price">₹80/kg</span>
+                            </div>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="qr-code (3).png" alt="Organic Spinach">
+                        <div class="qr-tag" onclick="openModal('spinach')">QR</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Organic Spinach</h3>
+                        <div class="farm-name">From: GreenLeaf Organics, Tamil Nadu</div>
+                        <p>Nutrient-rich spinach, freshly harvested.</p>
+                        <div class="price-info">
+                            <div>
+                                <span class="price">₹45/bunch</span>
+                                <span class="original-price">₹65/bunch</span>
+                            </div>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="qr-code (2).png" alt="Organic Apples">
+                        <div class="qr-tag" onclick="openModal('apples')">QR</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Organic Apples</h3>
+                        <div class="farm-name">From: Himalayan Orchards, Himachal</div>
+                        <p>Sweet and crunchy mountain-grown apples.</p>
+                        <div class="price-info">
+                            <div>
+                                <span class="price">₹120/kg</span>
+                                <span class="original-price">₹160/kg</span>
+                            </div>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="qr-code (1).png" alt="Organic Brown Rice">
+                        <div class="qr-tag" onclick="openModal('rice')">QR</div>
+                    </div>
+                    <div class="product-info">
+                        <h3>Organic Brown Rice</h3>
+                        <div class="farm-name">From: PureLand Farms, West Bengal</div>
+                        <p>Unpolished nutritious brown rice.</p>
+                        <div class="price-info">
+                            <div>
+                                <span class="price">₹95/kg</span>
+                                <span class="original-price">₹130/kg</span>
+                            </div>
+                            <button class="add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Customers Say</h2>
+                <p>Join hundreds of satisfied customers who've made the switch to transparent, direct-from-farm organics.</p>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"I love being able to scan the QR code and see exactly where my food comes from and what the farmer was paid. It feels good knowing I'm supporting local agriculture fairly while getting fresher produce at better prices."</p>
+                    <p class="testimonial-author">- Priya Sharma, Delhi</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <h2>Start Your Journey to Healthier, Fairer Food</h2>
+            <p>Join Sanvi Organics today and experience the difference of farm-direct organic products with transparent pricing.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-white">Sign Up Now</a>
+                <a href="#" class="btn btn-outline-white">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Sanvi Organics</h3>
+                    <p>Direct farm-to-home organic products with transparent pricing and QR traceability.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#qr-info">QR Transparency</a></li>
+                        <li><a href="#about">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>For Farmers</h3>
+                    <ul>
+                        <li><a href="#">Join as a Farmer</a></li>
+                        <li><a href="#">Farmer Dashboard</a></li>
+                        <li><a href="#">Pricing Policy</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><a href="mailto:info@sanviorganics.com">info@sanviorganics.com</a></li>
+                        <li><a href="tel:+919876543210">+91 98765 43210</a></li>
+                        <li>123 Green Street, Bangalore, Karnataka</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <img src=""
+                <p>&copy; 2025 Sanvi Organics. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- QR Code Modal -->
+    <div class="modal" id="qrModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="qr-details">
+                <h3 id="modal-product-name">Product Details</h3>
+                <img src="qr-code.png" alt="QR Code">
+                <p>Scan this QR code with your phone camera or our app</p>
+                <div class="product-details">
+                    <div class="detail-row">
+                        <span class="detail-label">Farm Name:</span>
+                        <span id="modal-farm-name">Green Valley Farm</span>
+                    </div>
+                    <div class="detail-row">
+                        <span class="detail-label">Farmer Price:</span>
+                        <span id="modal-farmer-price">₹45/kg</span>
+                    </div>
+                    <div class="detail-row">
+                        
